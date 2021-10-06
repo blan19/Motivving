@@ -10,7 +10,7 @@ import * as ormconfig from '../ormconfig';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(ormconfig),
     UserModule,
     AuthModule,
