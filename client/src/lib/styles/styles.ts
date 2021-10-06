@@ -148,6 +148,6 @@ export const styles: Styles = {
     ],
   },
   primary: {
-    light: ['#777CB4', '#EC86A8'],
+    light: ['#777CB4', '#EC86A8', '#ECF0F3'],
   },
 };

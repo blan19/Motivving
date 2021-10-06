@@ -5,9 +5,9 @@ const MyMotive = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="388"
+      width="1150"
       height="434"
-      viewBox="0 0 388 434"
+      viewBox="0 0 1150 434"
     >
       <defs>
         <filter
@@ -25,6 +25,44 @@ const MyMotive = () => {
           <feComposite in="SourceGraphic" />
         </filter>
       </defs>
+      <text
+        id="진한_Motive는_항상_남겨두기_"
+        data-name="진한 Motive는
+항상 남겨두기 !"
+        transform="translate(755 122)"
+        fill="#777cb4"
+        fontSize="60"
+        fontFamily="GmarketSansTTFMedium, Gmarket Sans TTF"
+        letterSpacing="-0.02em"
+      >
+        <tspan x="0" y="0">
+          진한{' '}
+        </tspan>
+        <tspan y="0" fill="#ec86a8">
+          Motive
+        </tspan>
+        <tspan y="0">는</tspan>
+        <tspan x="0" y="81">
+          항상 남겨두기 !
+        </tspan>
+      </text>
+      <text
+        id="감명깊게_본_Motive_영상이나_글귀는_My_Motive에_저장해서_항상_남겨둬요"
+        data-name="감명깊게 본 Motive 영상이나 글귀는
+My Motive에 저장해서 항상 남겨둬요"
+        transform="translate(755 274)"
+        fill="#777cb4"
+        fontSize="22"
+        fontFamily="GmarketSansTTFLight, Gmarket Sans TTF"
+        letterSpacing="-0.02em"
+      >
+        <tspan x="0" y="0">
+          감명깊게 본 Motive 영상이나 글귀는
+        </tspan>
+        <tspan x="0" y="29">
+          My Motive에 저장해서 항상 남겨둬요
+        </tspan>
+      </text>
       <g
         transform="matrix(1, 0, 0, 1, 0, 0)"
         filter="url(#landing_말풍선)"

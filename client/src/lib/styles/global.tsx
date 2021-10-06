@@ -4,10 +4,27 @@ const styles = css`
   @import url('./assets/font/font.css');
   html,
   body {
+    font-size: 62.5%;
     background: #ecf0f3;
     font-family: 'Gmaket Sans', sans-serif;
     margin: 0;
     padding: 0;
+
+    @media screen and (max-width: 1280px) {
+      font-size: 56.25%;
+    }
+
+    @media screen and (max-width: 1024px) {
+      font-size: 50%;
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 37.5%;
+    }
+
+    @media screen and (max-width: 480px) {
+      font-size: 25%;
+    }
   }
 
   ul,
