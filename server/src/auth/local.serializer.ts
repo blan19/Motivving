@@ -1,17 +1,37 @@
 import { Injectable } from '@nestjs/common';
 import { PassportSerializer } from '@nestjs/passport';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/entities/User';
+import { Repository } from 'typeorm';
 
 @Injectable()
-export class LocalSerialize extends PassportSerializer {
-  constructor() {
+export class LocalSerializer extends PassportSerializer {
+  constructor(
+    @InjectRepository(User) private usersRepository: Repository<User>,
+  ) {
     super();
   }
 
   serializeUser(user: any, done: CallableFunction) {
-    return done(null, user);
+    console.log(user);
+    done(null, user.id);
   }
 
-  deserializeUser(user: any, done: CallableFunction) {
-    return done(null, user);
+  async deserializeUser(userId: string, done: CallableFunction) {
+    return await this.usersRepository
+      .findOneOrFail(
+        {
+          id: +userId,
+        },
+        {
+          select: ['id', 'email', 'nickname'],
+          relations: ['Workspaces'],
+        },
+      )
+      .then((user) => {
+        console.log('user', user);
+        done(null, user);
+      })
+      .catch((error) => done(error));
   }
 }

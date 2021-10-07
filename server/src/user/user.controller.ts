@@ -17,11 +17,6 @@ export class UserController {
     return req.user;
   }
 
-  @Get('/profile')
-  async getProfile(@Request() req) {
-    return req.user;
-  }
-
   @Post('/register')
   async register(@Request() req, @Response({ passthrough: true }) res) {
     console.log(req.body);
