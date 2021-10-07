@@ -16,7 +16,7 @@ import {
 
 const Landing: VFC<RouteComponentProps> = ({ history }) => {
   const onClick = useCallback(() => {
-    history.push('/');
+    history.push('/login');
   }, [history]);
   return (
     <>

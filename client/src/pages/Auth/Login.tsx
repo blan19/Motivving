@@ -1,11 +1,23 @@
-import React, { Fragment } from 'react';
+import React, { useCallback, VFC } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
+import Auth from '../../components/Auth';
+import TextLogo from '../../lib/styles/svg/TextLogo';
+import { AuthContainer, LogoBlock, StyledResponsive } from './Styles';
 
-const Login = () => {
+const Login: VFC<RouteComponentProps> = ({ history }) => {
+  const onClick = useCallback(() => {
+    history.push('/');
+  }, [history]);
   return (
-    <Fragment>
-      <h1>hello..!</h1>
-    </Fragment>
+    <AuthContainer>
+      <StyledResponsive>
+        <LogoBlock onClick={onClick}>
+          <TextLogo />
+        </LogoBlock>
+        <Auth />
+      </StyledResponsive>
+    </AuthContainer>
   );
 };
 
-export default Login;
+export default withRouter(Login);
