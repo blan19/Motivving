@@ -7,14 +7,15 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { LocalAuthGuard } from 'src/auth/local-auth.guard';
+import { User } from 'src/decorator/user.decorator';
 import { UserService } from './user.service';
 
 @Controller('api/users')
 export class UserController {
   constructor(private userService: UserService) {}
   @Get('/')
-  async getUser(@Request() req) {
-    return req.user;
+  async getUser(@User() user) {
+    return user;
   }
 
   @Post('/register')

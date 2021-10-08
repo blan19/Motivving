@@ -10,7 +10,10 @@ import { LocalStrategy } from './local.strategy';
 import { NaverStrategy } from './naver.strategy';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User]), PassportModule],
+  imports: [
+    TypeOrmModule.forFeature([User]),
+    PassportModule.register({ session: true }),
+  ],
   controllers: [AuthController],
   providers: [
     AuthService,
