@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import Home from '../../layout/Home';
 
 const Main = () => {
   return (
-    <Fragment>
-      <h1>Main..</h1>
-    </Fragment>
+    <Home>
+      <h1>Main Page..</h1>
+    </Home>
   );
 };
 

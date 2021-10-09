@@ -6,7 +6,7 @@ import { AuthContainer, LogoBlock, StyledResponsive } from './Styles';
 
 const Signup: VFC<RouteComponentProps> = ({ history }) => {
   const onClick = useCallback(() => {
-    history.push('/');
+    history.push('/main');
   }, [history]);
   return (
     <AuthContainer>

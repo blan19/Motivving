@@ -1,10 +1,14 @@
 import React from 'react';
 import { OauthContainer } from './styles';
+import { BsChatFill } from 'react-icons/all';
 
 const KaKaoLogin = () => {
   return (
-    <OauthContainer>
-      <img src="/assets/kakao.png" alt="kakao" />
+    <OauthContainer type="kakao">
+      <div className="symbol">
+        <BsChatFill />
+      </div>
+      <span>카카오 로그인</span>
     </OauthContainer>
   );
 };

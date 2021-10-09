@@ -37,7 +37,7 @@ const Auth: VFC<PropsTypes> = ({ type }) => {
       const { email, nickname, password } = data;
       const fetch = async () => {
         try {
-          if (type === 'Login') {
+          if (type !== 'signup') {
             await axios
               .post(
                 'http://localhost:4000/api/users/login',

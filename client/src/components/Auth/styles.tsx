@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { styles } from '../../lib/styles/styles';
 
@@ -68,14 +69,45 @@ export const AuthButton = styled.button`
   margin-top: 2rem;
 `;
 
-export const OauthContainer = styled.div`
+export const OauthContainer = styled.div<{ type?: string }>`
   width: calc(100% + 2.9rem);
-  height: 62px;
+  height: 7rem;
   margin-top: 4rem;
+  border-radius: 5px;
   cursor: pointer;
-  img {
-    width: 100%;
-    height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ${(props) =>
+    props.type === 'kakao' &&
+    css`
+      background: #fee500;
+      span {
+        font-size: 2.75rem;
+        color: #000000 85%;
+        padding-left: 1rem;
+      }
+    `}
+
+  ${(props) =>
+    props.type === 'naver' &&
+    css`
+      background: #03c75a;
+      span {
+        font-size: 2.75rem;
+        color: white;
+        padding-left: 1rem;
+      }
+    `}
+
+  svg {
+    font-size: 3rem;
+    color: ${(props) => props.type === 'naver' && 'white'};
+  }
+
+  &:hover {
+    opacity: 0.8;
   }
 `;
 

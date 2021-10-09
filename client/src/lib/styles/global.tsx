@@ -31,6 +31,7 @@ const styles = css`
   li {
     margin: 0;
     padding: 0;
+    list-style: none;
   }
 
   h1,
@@ -43,11 +44,12 @@ const styles = css`
     margin: 0;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   margin: 0;
   padding: 0;
-
-  text-decoration: none;
-  list-style: none;
 `;
 
 export const GlobalStyles = () => {
