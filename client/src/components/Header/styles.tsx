@@ -1,6 +1,8 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Responsive from '../../lib/styles/Responsive';
 import { styles } from '../../lib/styles/styles';
+import { Theme } from '../../lib/styles/Theme';
 
 export const HeaderContainer = styled.div`
   width: 100%;
@@ -29,15 +31,19 @@ export const HeaderLogo = styled.div`
   }
 `;
 
-export const Nav = styled.div`
+export const Nav = styled.div<{ isDarkMode?: boolean }>`
   ul {
     display: flex;
   }
   ul > li {
     padding: 1rem;
+    margin: 1rem;
+    border-radius: 15px;
+    &:hover {
+      background: ${(props) => (props.isDarkMode ? '#292a2d' : '#dee2e6')};
+    }
   }
   ul > li > a {
-    color: ${styles.primary.light[0]};
     font-size: 1.75rem;
     font-weight: 600;
   }
@@ -47,7 +53,18 @@ export const Nav = styled.div`
   }
 `;
 
-export const User = styled.div`
+export const NavStyles = (theme: Theme) => css`
+  ul li a {
+    font-size: 1.75rem;
+    font-weight: 600;
+  }
+`;
+
+export const NavLinkStyles = (theme: Theme) => css`
+  color: ${theme.font};
+`;
+
+export const User = styled.div<{ isDarkMode?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,8 +73,6 @@ export const User = styled.div`
     background: none;
     outline: none;
 
-    background: ${styles.primary.light[0]};
-    color: ${styles.primary.light[2]};
     font-size: 2rem;
     border-radius: 5px;
     padding: 0.7rem 2rem;
@@ -65,9 +80,34 @@ export const User = styled.div`
     margin-left: 2rem;
   }
 
+  .search {
+    &:hover {
+      background: ${(props) => (props.isDarkMode ? '#292a2d' : '#dee2e6')};
+    }
+  }
+
   svg {
     font-size: 3.5rem;
     cursor: pointer;
+  }
+`;
+
+export const UserStyles = (theme: Theme) => css`
+  button {
+    background: ${theme.primary};
+    color: ${theme.buttonFont};
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  svg {
+    color: ${theme.input};
   }
 `;
 

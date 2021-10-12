@@ -1,57 +1,18 @@
-import { css, Global } from '@emotion/react';
+import React from 'react';
+import { Global, css } from '@emotion/react';
+import { default as THEME, Theme } from './Theme';
+import useDarkMode from '../../hook/useDartkMode';
 
-const styles = css`
-  @import url('./assets/font/font.css');
+const styles = (theme: Theme) => css`
   html,
   body {
-    font-size: 62.5%;
-    background: #ecf0f3;
-    font-family: 'Gmaket Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-
-    @media screen and (max-width: 1280px) {
-      font-size: 56.25%;
-    }
-
-    @media screen and (max-width: 1024px) {
-      font-size: 50%;
-    }
-
-    @media screen and (max-width: 768px) {
-      font-size: 37.5%;
-    }
-
-    @media screen and (max-width: 480px) {
-      font-size: 25%;
-    }
+    background: ${theme.background};
   }
-
-  ul,
-  li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  h1,
-  h2,
-  h3 {
-    margin: 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  margin: 0;
-  padding: 0;
 `;
 
-export const GlobalStyles = () => {
-  return <Global styles={styles} />;
+const GlobalStyles = () => {
+  const { isDarkMode } = useDarkMode();
+  return <Global styles={styles(THEME[isDarkMode ? 'dark' : 'light'])} />;
 };
+
+export default GlobalStyles;

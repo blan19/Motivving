@@ -1,6 +1,6 @@
-import React, { useCallback, useRef, VFC } from 'react';
+/** @jsxImportSource @emotion/react */
+import React, { useCallback, VFC } from 'react';
 import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
-import useHover from '../../hook/useHover';
 import Logo from '../../lib/styles/svg/Logo';
 import {
   HeaderContainer,
@@ -10,11 +10,17 @@ import {
   Nav,
   User,
   ChangeWrapper,
+  UserStyles,
+  NavStyles,
+  NavLinkStyles,
 } from './styles';
 import { FiSearch } from 'react-icons/fi';
+import { useTheme } from '@emotion/react';
+import useDarkMode from '../../hook/useDartkMode';
 
 const Header: VFC<RouteComponentProps> = ({ history }) => {
-  const hoverRef = useRef(null);
+  const theme = useTheme();
+  const { isDarkMode } = useDarkMode();
   const onPush = useCallback(
     (type: string) => {
       if (type === 'main') {
@@ -34,27 +40,41 @@ const Header: VFC<RouteComponentProps> = ({ history }) => {
             <HeaderLogo onClick={() => onPush('main')}>
               <Logo />
             </HeaderLogo>
-            <Nav>
+            <Nav isDarkMode={isDarkMode} css={NavStyles(theme)}>
               <ul>
-                <li ref={hoverRef}>
-                  <NavLink activeClassName="selected" to="/main">
+                <li>
+                  <NavLink
+                    css={NavLinkStyles(theme)}
+                    activeClassName="selected"
+                    to="/main"
+                  >
                     Main
                   </NavLink>
                 </li>
-                <li ref={hoverRef}>
-                  <NavLink activeClassName="selected" to="/category/all">
+                <li>
+                  <NavLink
+                    css={NavLinkStyles(theme)}
+                    activeClassName="selected"
+                    to="/category/all"
+                  >
                     Category
                   </NavLink>
                 </li>
-                <li ref={hoverRef}>
-                  <NavLink activeClassName="selected" to="/account">
+                <li>
+                  <NavLink
+                    css={NavLinkStyles(theme)}
+                    activeClassName="selected"
+                    to="/account"
+                  >
                     My Motive
                   </NavLink>
                 </li>
               </ul>
             </Nav>
-            <User>
-              <FiSearch />
+            <User isDarkMode={isDarkMode} css={UserStyles(theme)}>
+              <div className="search">
+                <FiSearch />
+              </div>
               <button onClick={() => onPush('login')}>Login</button>
             </User>
           </HeaderResponsive>

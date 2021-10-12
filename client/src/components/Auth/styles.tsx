@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { styles } from '../../lib/styles/styles';
+import { Theme } from '../../lib/styles/Theme';
 
 export const Form = styled.form`
   margin-top: 2rem;
@@ -30,14 +31,23 @@ export const Form = styled.form`
   }
 `;
 
+export const FormStyles = (theme: Theme) => css`
+  .box {
+    p {
+      color: ${theme.font};
+      a {
+        color: ${theme.sub};
+      }
+    }
+  }
+`;
+
 export const Input = styled.input`
   background: none;
   border: none;
   outline: none;
 
   width: 100%;
-  color: ${styles.primary.light[0]};
-  border: 1.5px solid ${styles.primary.light[0]};
   font-size: 2rem;
 
   padding: 1.3rem;
@@ -45,12 +55,23 @@ export const Input = styled.input`
   margin: 2rem;
 
   &::placeholder {
-    color: ${styles.primary.light[0]};
     font-size: 2rem;
+  }
+`;
+
+export const InputStyle = (theme: Theme) => css`
+  color: ${theme.font};
+  border: 1.5px solid ${theme.input};
+  &::placeholder {
+    color: ${theme.input};
   }
 
   &:focus {
     border-color: ${styles.primary.light[1]};
+
+    &::placeholder {
+      color: ${styles.primary.light[1]};
+    }
   }
 `;
 
@@ -60,13 +81,16 @@ export const AuthButton = styled.button`
   outline: none;
 
   width: calc(100% + 2.9rem);
-  background: ${styles.primary.light[0]};
-  color: ${styles.primary.light[2]};
   border-radius: 5px;
   cursor: pointer;
   font-size: 2.75rem;
   padding: 1.5rem;
   margin-top: 2rem;
+`;
+
+export const AuthButtonStyles = (theme: Theme) => css`
+  background: ${theme.primary};
+  color: ${theme.buttonFont};
 `;
 
 export const OauthContainer = styled.div<{ type?: string }>`

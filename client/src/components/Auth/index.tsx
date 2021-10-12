@@ -1,12 +1,22 @@
+/** @jsxImportSource @emotion/react */
 import React, { useCallback, useRef, VFC } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import KaKaoLogin from './KaKaoLogin';
 import NaverLogin from './NaverLogin';
-import { AuthButton, AuthError, Form, Input } from './styles';
+import {
+  AuthButton,
+  AuthButtonStyles,
+  AuthError,
+  Form,
+  FormStyles,
+  Input,
+  InputStyle,
+} from './styles';
 import { useQuery, useQueryClient } from 'react-query';
 import axios from 'axios';
 import { fetcher } from '../../lib/api/fetch';
+import { useTheme } from '@emotion/react';
 
 interface PropsTypes {
   type?: string;
@@ -31,6 +41,7 @@ const Auth: VFC<PropsTypes> = ({ type }) => {
   } = useForm<FormData>();
   const password = useRef<string>();
   password.current = watch('password');
+  const theme = useTheme();
 
   const onSubmit = useCallback(
     (data: FormData) => {
@@ -75,8 +86,9 @@ const Auth: VFC<PropsTypes> = ({ type }) => {
     [queryClient, reset, type],
   );
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form css={FormStyles(theme)} onSubmit={handleSubmit(onSubmit)}>
       <Input
+        css={InputStyle(theme)}
         {...register('email', {
           required: true,
           pattern:
@@ -96,6 +108,7 @@ const Auth: VFC<PropsTypes> = ({ type }) => {
       )}
       {type === 'signup' && (
         <Input
+          css={InputStyle(theme)}
           placeholder="NICKNAME"
           {...register('nickname', { required: true, minLength: 2 })}
         />
@@ -111,6 +124,7 @@ const Auth: VFC<PropsTypes> = ({ type }) => {
         </AuthError>
       )}
       <Input
+        css={InputStyle(theme)}
         type="password"
         placeholder="PW"
         {...register('password', { required: true, minLength: 5 })}
@@ -127,6 +141,7 @@ const Auth: VFC<PropsTypes> = ({ type }) => {
       )}
       {type === 'signup' && (
         <Input
+          css={InputStyle(theme)}
           type="password"
           placeholder="PW CONFIRM"
           {...register('passwordConfirm', {
@@ -145,7 +160,9 @@ const Auth: VFC<PropsTypes> = ({ type }) => {
           <p>❌ 비밀번호를 확인해주세요.</p>
         </AuthError>
       )}
-      <AuthButton type="submit">로그인</AuthButton>
+      <AuthButton css={AuthButtonStyles(theme)} type="submit">
+        로그인
+      </AuthButton>
       <div className="box">
         {type !== 'signup' ? (
           <p>
