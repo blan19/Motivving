@@ -7,6 +7,8 @@ const styles = (theme: Theme) => css`
   html,
   body {
     background: ${theme.background};
+
+    transition: background 0.5s ease;
   }
 `;
 

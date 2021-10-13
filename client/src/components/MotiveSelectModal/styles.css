@@ -1,0 +1,9 @@
+.styled-dark {
+  border-radius: 5px;
+  background: #292a2d;
+}
+
+.styled-light {
+  border-radius: 5px;
+  background: #fff;
+}

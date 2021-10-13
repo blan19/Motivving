@@ -11,5 +11,8 @@ declare module '@emotion/react' {
     buttonFont: string;
     toggle: string;
     input: string;
+    modal: string;
+    modalChecked: string;
+    modalFont: string;
   }
 }
