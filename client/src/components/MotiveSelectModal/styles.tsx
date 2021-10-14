@@ -16,6 +16,7 @@ export const MotiveSelectModalForm = styled.form<{ isDarkMode?: boolean }>`
 
   .sub-1 {
     font-size: 2rem;
+    margin-top: 1rem;
   }
 
   .sub-2 {
@@ -24,10 +25,17 @@ export const MotiveSelectModalForm = styled.form<{ isDarkMode?: boolean }>`
   }
 
   .checkbox {
-    margin: 5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 90%;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+    gap: 2.5rem;
     label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 2rem 5rem;
-      margin: 0 1rem;
       font-size: 2rem;
       border-radius: 5px;
       transition: all 0.3s;
@@ -39,6 +47,38 @@ export const MotiveSelectModalForm = styled.form<{ isDarkMode?: boolean }>`
 
     input[type='checkbox'] + label {
       cursor: pointer;
+    }
+  }
+
+  .error {
+    p {
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+  }
+
+  .button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+    span {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 2rem;
+      position: relative;
+    }
+    span:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 7px;
+      position: absolute;
+      bottom: -4px;
+      left: 1px;
+      background: rgba(244, 5, 166, 0.44);
     }
   }
 
@@ -87,6 +127,18 @@ export const StylesMotiveSelectModalForm = (theme: Theme) => css`
     input[type='checkbox']:checked + label {
       background: ${theme.modalChecked};
       color: ${theme.buttonFont};
+    }
+  }
+
+  .error {
+    p {
+      color: ${theme.sub};
+    }
+  }
+
+  .button {
+    span {
+      color: ${theme.font};
     }
   }
 `;

@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { Theme } from '../../lib/styles/Theme';
 
 export const ToggleContainer = (theme: Theme) => css`
-  position: absolute;
+  position: fixed;
   width: 65px;
   height: 65px;
   background: ${theme.toggle};

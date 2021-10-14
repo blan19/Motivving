@@ -11,6 +11,11 @@ export const HeaderContainer = styled.div`
   position: fixed;
 `;
 
+export const HeaderContainerStyles = (theme: Theme) => css`
+  transition: all 0.3s ease;
+  background: ${theme.background};
+`;
+
 export const ChangeWrapper = styled.div`
   width: 100%;
   height: 100%;

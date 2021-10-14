@@ -13,6 +13,7 @@ import {
   UserStyles,
   NavStyles,
   NavLinkStyles,
+  HeaderContainerStyles,
 } from './styles';
 import { FiSearch } from 'react-icons/fi';
 import { useTheme } from '@emotion/react';
@@ -34,7 +35,7 @@ const Header: VFC<RouteComponentProps> = ({ history }) => {
   );
   return (
     <>
-      <HeaderContainer>
+      <HeaderContainer css={HeaderContainerStyles(theme)}>
         <ChangeWrapper>
           <HeaderResponsive>
             <HeaderLogo onClick={() => onPush('main')}>
