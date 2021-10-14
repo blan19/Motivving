@@ -10,6 +10,7 @@ export interface Theme {
   modal: string;
   modalChecked: string;
   modalFont: string;
+  TopBg: string;
 }
 
 interface ThemeGroup {
@@ -29,9 +30,10 @@ export const dark: Theme = {
   buttonFont: '#fff',
   toggle: '#292a2d',
   input: '#fff',
-  modal: '',
-  modalChecked: '',
-  modalFont: '',
+  modal: '#fff',
+  modalChecked: '#EC86A8',
+  modalFont: '#121212',
+  TopBg: '#292a2d',
 };
 
 /**
@@ -49,6 +51,7 @@ export const light: Theme = {
   modal: '#ECF0F3',
   modalChecked: '#777CB4',
   modalFont: '#777CB4',
+  TopBg: '#fff',
 };
 
 const mode: ThemeGroup = {

@@ -14,5 +14,6 @@ declare module '@emotion/react' {
     modal: string;
     modalChecked: string;
     modalFont: string;
+    TopBg: string;
   }
 }
