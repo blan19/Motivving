@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 
 const ResponsiveBlock = styled.div`
   width: 1280px;
-  height: 100%;
   margin: 0 auto;
 
   @media screen and (max-width: 1280px) {

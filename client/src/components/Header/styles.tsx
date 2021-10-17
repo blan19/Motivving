@@ -23,6 +23,7 @@ export const ChangeWrapper = styled.div`
 
 export const HeaderResponsive = styled(Responsive)`
   display: flex;
+  height: 100%;
   align-items: center;
   justify-content: space-between;
 `;
@@ -86,8 +87,9 @@ export const User = styled.div<{ isDarkMode?: boolean }>`
   }
 
   .search {
+    transition: opacity 0.3s;
     &:hover {
-      background: ${(props) => (props.isDarkMode ? '#292a2d' : '#dee2e6')};
+      opacity: 0.8;
     }
   }
 
@@ -99,8 +101,7 @@ export const User = styled.div<{ isDarkMode?: boolean }>`
 
 export const UserStyles = (theme: Theme) => css`
   button {
-    background: ${theme.primary};
-    color: ${theme.buttonFont};
+    color: ${theme.input};
   }
 
   .search {
@@ -109,10 +110,11 @@ export const UserStyles = (theme: Theme) => css`
     justify-content: center;
     padding: 1rem;
     border-radius: 15px;
+    background: ${theme.primary};
   }
 
   svg {
-    color: ${theme.input};
+    color: ${theme.buttonFont};
   }
 `;
 
