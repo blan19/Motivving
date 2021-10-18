@@ -31,6 +31,22 @@ const RecomendMotive: VFC<PropsTypes> = ({ type }) => {
           </h1>
         </>
       );
+    } else if (type === 'jurney') {
+      return (
+        <>
+          <h1>
+            숨겨진 <span>여행</span> DNA를 꺼내보자
+          </h1>
+        </>
+      );
+    } else if (type === 'design') {
+      return (
+        <>
+          <h1>
+            <span>디자이너</span>를 꿈꾸는 당신에게 !
+          </h1>
+        </>
+      );
     }
   }, [type]);
 
@@ -40,7 +56,8 @@ const RecomendMotive: VFC<PropsTypes> = ({ type }) => {
       loop: true,
       spaceBetween: 15,
       autoplay: {
-        delay: 3000,
+        delay: 2500,
+        disableOnInteraction: false,
       },
       breakpoints: {
         1024: {

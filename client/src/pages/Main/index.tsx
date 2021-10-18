@@ -10,6 +10,8 @@ const Main = () => {
       <Home>
         <TopMotive />
         <RecomendMotive type="challenge" />
+        <RecomendMotive type="jurney" />
+        <RecomendMotive type="design" />
       </Home>
       <MotiveSelectModal />
     </>

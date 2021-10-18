@@ -26,9 +26,13 @@ export const RecomendMotiveContainerStyles = (theme: Theme) => css`
 
 export const RecomendResponsive = styled(Responsive)`
   position: relative;
+  .swiper-container {
+    margin: 0 5rem;
+  }
   .title {
     margin-top: 5rem;
     margin-bottom: 5rem;
+    margin-left: 5rem;
     font-size: 1.75rem;
   }
 
@@ -89,18 +93,66 @@ export const RecomendItemContainer = styled.div`
   }
 
   .video-title {
+    width: 100%;
     margin: 2rem 0;
-    font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
+    .like {
+      cursor: pointer;
+      svg {
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .video-desc {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.75rem;
+    font-weight: lighter;
+  }
+
+  .video-hashtag {
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .hashtag {
+      border-radius: 10px;
+      margin-right: 0.75rem;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
   }
 `;
 
 export const RecomendItemContainerStyles = (theme: Theme) => css`
   .video-title {
     span {
+      color: ${theme.input};
+    }
+    .like {
+      svg {
+        color: ${theme.sub};
+      }
+    }
+  }
+
+  .video-desc {
+    color: ${theme.input};
+  }
+
+  .video-hashtag {
+    .hashtag {
+      border: 1px solid ${theme.input};
       color: ${theme.input};
     }
   }

@@ -29,7 +29,8 @@ const TopMotive = () => {
       loop: true,
       spaceBetween: 15,
       autoplay: {
-        delay: 3000,
+        delay: 2500,
+        disableOnInteraction: false,
       },
       breakpoints: {
         1024: {
