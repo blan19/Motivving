@@ -5,7 +5,7 @@ import { Theme } from '../../../lib/styles/Theme';
 
 export const TopMotiveContainer = styled.div`
   width: 100%;
-  height: 50rem;
+  height: 53.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,23 +35,57 @@ export const TopMotiveContainerStyles = (theme: Theme) => css`
 
 export const StyledResponsive = styled(Responsive)`
   flex: 1;
+  position: relative;
+  margin-bottom: 3.5rem;
+  .prev {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0px;
+    z-index: 900;
+    svg {
+      font-size: 4rem;
+    }
+  }
+  .next {
+    position: absolute;
+    cursor: pointer;
+    right: 0px;
+    top: 50%;
+    z-index: 900;
+    transform: translateY(-50%);
+    svg {
+      font-size: 4rem;
+    }
+  }
+`;
+
+export const StyledResponsiveStyles = (theme: Theme) => css`
+  svg {
+    color: ${theme.input};
+  }
 `;
 
 export const SliderContainer = styled.div`
-  height: 100%;
   position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SliderWrapper = styled.div``;
+
+export const SliderContents = styled.div`
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  .prev .next {
-    position: absolute;
-  }
-
-  .prev {
-    left: 10px;
-  }
-
-  .next {
+  .thumb {
+    width: 100%;
+    height: 40rem;
+    background: #939393;
   }
 `;

@@ -9,7 +9,7 @@ const Main = () => {
     <>
       <Home>
         <TopMotive />
-        <RecomendMotive />
+        <RecomendMotive type="challenge" />
       </Home>
       <MotiveSelectModal />
     </>

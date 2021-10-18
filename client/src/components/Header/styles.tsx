@@ -9,6 +9,7 @@ export const HeaderContainer = styled.div`
   height: 80px;
 
   position: fixed;
+  z-index: 1000;
 `;
 
 export const HeaderContainerStyles = (theme: Theme) => css`
