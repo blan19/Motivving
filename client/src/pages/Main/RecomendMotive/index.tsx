@@ -11,12 +11,16 @@ import RecomendMotiveContent from './RecomendContent';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 interface PropsTypes {
   type: string;
 }
 
-const RecomendMotive: VFC<PropsTypes> = ({ type }) => {
+const RecomendMotive: VFC<PropsTypes & RouteComponentProps> = ({
+  type,
+  history,
+}) => {
   const theme = useTheme();
   const domRef = useRef<HTMLDivElement>(null);
   const swiperRef = useRef<Swiper>();
@@ -49,6 +53,10 @@ const RecomendMotive: VFC<PropsTypes> = ({ type }) => {
       );
     }
   }, [type]);
+
+  const onClick = useCallback(() => {
+    history.push(`/video/1`);
+  }, [history]);
 
   useEffect(() => {
     const mySwiper = new Swiper(domRef.current!, {
@@ -88,7 +96,7 @@ const RecomendMotive: VFC<PropsTypes> = ({ type }) => {
         <div className="swiper-container" ref={domRef}>
           <div className="swiper-wrapper">
             {ARRAY_LIST.map((item) => (
-              <div className="swiper-slide" key={item}>
+              <div className="swiper-slide" key={item} onClick={onClick}>
                 <RecomendMotiveContent />
               </div>
             ))}
@@ -99,4 +107,4 @@ const RecomendMotive: VFC<PropsTypes> = ({ type }) => {
   );
 };
 
-export default RecomendMotive;
+export default withRouter(RecomendMotive);

@@ -1,5 +1,6 @@
 import React, { useCallback, VFC } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
+import useDarkMode from '../../hook/useDartkMode';
 import Circle from '../../lib/styles/svg/Circle';
 import Intro from '../../lib/styles/svg/Intro';
 import MyMotive from '../../lib/styles/svg/MyMotive';
@@ -18,6 +19,7 @@ const Landing: VFC<RouteComponentProps> = ({ history }) => {
   const onClick = useCallback(() => {
     history.push('/login');
   }, [history]);
+  const { isDarkMode } = useDarkMode();
   return (
     <>
       <Container>
@@ -28,7 +30,7 @@ const Landing: VFC<RouteComponentProps> = ({ history }) => {
           <Circle />
         </div>
       </Container>
-      <Container white md>
+      <Container white md isDarkMode={isDarkMode}>
         <StyledResponsive>
           <Select />
         </StyledResponsive>
@@ -38,7 +40,7 @@ const Landing: VFC<RouteComponentProps> = ({ history }) => {
           <MyMotive />
         </StyledResponsive>
       </Container>
-      <Container white>
+      <Container white isDarkMode={isDarkMode}>
         <StyledResponsive>
           <Today />
           <div className="space"></div>

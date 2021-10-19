@@ -3,13 +3,17 @@ import { styles } from '../../lib/styles/styles';
 import { css } from '@emotion/react';
 import Responsive from '../../lib/styles/Responsive';
 
-export const Container = styled.div<{ white?: boolean; md?: boolean }>`
+export const Container = styled.div<{
+  isDarkMode?: boolean;
+  white?: boolean;
+  md?: boolean;
+}>`
   width: 100%;
   position: relative;
   ${(props) =>
     props.white
       ? css`
-          background: white;
+          background: ${props.isDarkMode ? '#292a2d' : 'white'};
         `
       : css``}
   ${(props) =>
@@ -55,6 +59,7 @@ export const StyledResponsive = styled(Responsive)`
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
   svg {
     width: 100%;
   }
@@ -67,6 +72,7 @@ export const Start = styled.div`
 
 export const StartResponsive = styled(Responsive)`
   display: flex;
+  height: 100%;
   align-items: center;
   justify-content: center;
   flex-direction: column;

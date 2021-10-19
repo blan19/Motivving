@@ -8,16 +8,7 @@ const Category = () => {
     <Home>
       <CategoryContainer>
         <Switch>
-          <Route path="/category/all" />
-          <Route path="/category/brave" />
-          <Route path="/category/transfer" />
-          <Route path="/category/object" />
-          <Route path="/category/worry" />
-          <Route path="/category/success" />
-          <Route path="/category/design" />
-          <Route path="/category/development" />
-          <Route path="/category/process" />
-          <Route path="/category/jurney" />
+          <Route path="/category/:category" />
         </Switch>
       </CategoryContainer>
     </Home>

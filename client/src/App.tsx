@@ -6,13 +6,14 @@ import useDarkMode from './hook/useDartkMode';
 import GlobalStyles from './lib/styles/Global';
 import { ResetStyles } from './lib/styles/reset';
 import Main from './pages/Main';
-import { default as THEME } from './lib/styles/Theme';
+import THEME from './lib/styles/Theme';
 
 const Landing = loadable(() => import('./pages/Landing'));
 const Login = loadable(() => import('./pages/Auth/Login'));
 const Signup = loadable(() => import('./pages/Auth/Signup'));
 const Category = loadable(() => import('./layout/Category'));
 const Account = loadable(() => import('./pages/Accout'));
+const Video = loadable(() => import('./pages/Video'));
 
 const App = () => {
   const { isDarkMode } = useDarkMode();
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/category/:category" component={Category} />
+          <Route path="/video/:video" component={Video} />
           <Route path="/account" component={Account} />
         </Switch>
       </ThemeProvider>
