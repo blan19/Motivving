@@ -36,45 +36,16 @@ export const VideoContainer = styled.div`
 export const ViewContainer = styled.div<{ isDesktop?: boolean }>`
   flex: 1;
   margin: 0 ${(props) => props.isDesktop && '3rem'};
-`;
 
-export const MyMotiveVideo = styled.div`
-  width: 300px;
-  height: 100%;
-  padding-right: 3rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  .title {
-    h1 {
-      font-size: 3rem;
-      font-weight: 400;
-    }
-  }
-
-  .myMotive {
-    flex: 1;
+  .divider {
     width: 100%;
-    .myMotive-video {
-      width: 100%;
-      height: 20rem;
-      margin-top: 3rem;
-      background: #939393;
-    }
+    height: 1px;
+    margin: 3rem 0;
   }
 `;
 
-export const MyMotiveStyles = (theme: Theme) => css`
-  .title {
-    h1 {
-      color: ${theme.sub};
-    }
-  }
-
-  .myMotive {
-    .myMotive-video {
-    }
+export const ViewContainerStyles = (theme: Theme) => css`
+  .divider {
+    background: ${theme.input};
   }
 `;
