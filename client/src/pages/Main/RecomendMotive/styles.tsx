@@ -117,21 +117,6 @@ export const RecomendItemContainer = styled.div`
     font-size: 1.75rem;
     font-weight: lighter;
   }
-
-  .video-hashtag {
-    width: 100%;
-    margin: 2rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
-    .hashtag {
-      border-radius: 10px;
-      margin-right: 0.75rem;
-      padding: 0.5rem;
-      cursor: pointer;
-    }
-  }
 `;
 
 export const RecomendItemContainerStyles = (theme: Theme) => css`
@@ -148,12 +133,5 @@ export const RecomendItemContainerStyles = (theme: Theme) => css`
 
   .video-desc {
     color: ${theme.input};
-  }
-
-  .video-hashtag {
-    .hashtag {
-      border: 1px solid ${theme.input};
-      color: ${theme.input};
-    }
   }
 `;

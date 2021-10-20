@@ -3,12 +3,14 @@ import { useTheme } from '@emotion/react';
 import React, { FC, useCallback, useState } from 'react';
 import { RecomendItemContainer, RecomendItemContainerStyles } from './styles';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import HashTag from '../../../components/HashTag';
 
 const RecomendMotiveContent: FC = () => {
   const theme = useTheme();
   const [like, setLike] = useState(false);
 
-  const onToggle = useCallback(() => {
+  const onToggle = useCallback((e) => {
+    e.stopPropagation();
     setLike((prev) => !prev);
   }, []);
   return (
@@ -30,10 +32,7 @@ const RecomendMotiveContent: FC = () => {
         <div className="view">조회수 | 0회</div>
         <div className="provider">Youtube</div>
       </div>
-      <div className="video-hashtag">
-        <div className="hashtag">#용기</div>
-        <div className="hashtag">#시작</div>
-      </div>
+      <HashTag text={['용기', '시작']} />
     </RecomendItemContainer>
   );
 };
