@@ -34,6 +34,7 @@ const VideoDetail = () => {
           <span>Youtube</span>
         </div>
       </div>
+      {/* 나중에 divider 컴포넌트화 */}
       <div className="divider"></div>
     </VideoDetailContainer>
   );
