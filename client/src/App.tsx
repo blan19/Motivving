@@ -7,6 +7,9 @@ import GlobalStyles from './lib/styles/Global';
 import { ResetStyles } from './lib/styles/reset';
 import Main from './pages/Main';
 import THEME from './lib/styles/Theme';
+import { useQuery, useQueryClient } from 'react-query';
+import { fetcher } from './lib/api/fetch';
+import { IUser } from './dto/IUser';
 
 const Landing = loadable(() => import('./pages/Landing'));
 const Login = loadable(() => import('./pages/Auth/Login'));
@@ -17,6 +20,11 @@ const Video = loadable(() => import('./pages/Video'));
 
 const App = () => {
   const { isDarkMode } = useDarkMode();
+  const { data: userData } = useQuery<IUser>('users', fetcher);
+
+  if (userData) {
+    console.log(userData);
+  }
   return (
     <>
       <ThemeProvider theme={THEME[isDarkMode ? 'dark' : 'light']}>
@@ -26,7 +34,10 @@ const App = () => {
           <Route exact path="/" component={Landing} />
           <Route path="/main" component={Main} />
           <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
+          <Route
+            path="/signup"
+            render={(props) => <Signup {...props} user={userData} />}
+          />
           <Route path="/category/:category" component={Category} />
           <Route path="/video/:video" component={Video} />
           <Route path="/account" component={Account} />

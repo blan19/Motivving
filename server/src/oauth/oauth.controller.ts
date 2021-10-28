@@ -12,7 +12,7 @@ export class OauthController {
       return null;
     }
 
-    return res.redirect('http://localhost:3000');
+    return res.redirect('http://localhost:3000/main');
   }
 
   @UseGuards(NaverGuard)
@@ -24,6 +24,6 @@ export class OauthController {
       return null;
     }
 
-    return res.redirect('http://localhost:3000');
+    return res.redirect('http://localhost:3000/main');
   }
 }

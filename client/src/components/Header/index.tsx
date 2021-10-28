@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useCallback, VFC } from 'react';
+import React, { useCallback, useState, VFC } from 'react';
 import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
 import Logo from '../../lib/styles/svg/Logo';
 import {
@@ -18,8 +18,15 @@ import {
 import { FiSearch } from 'react-icons/fi';
 import { useTheme } from '@emotion/react';
 import useDarkMode from '../../hook/useDartkMode';
+import { useQuery } from 'react-query';
+import { fetcher } from '../../lib/api/fetch';
+import gravatar from 'gravatar';
+import { IUser } from '../../dto/IUser';
+import ProfileModal from '../ProfileModal';
 
 const Header: VFC<RouteComponentProps> = ({ history }) => {
+  const { data: userData } = useQuery<IUser>('users', fetcher);
+  const [modal, setModal] = useState(false);
   const theme = useTheme();
   const { isDarkMode } = useDarkMode();
   const onPush = useCallback(
@@ -33,6 +40,10 @@ const Header: VFC<RouteComponentProps> = ({ history }) => {
     },
     [history],
   );
+
+  const onHandleModal = useCallback(() => {
+    setModal((prev) => !prev);
+  }, []);
   return (
     <>
       <HeaderContainer css={HeaderContainerStyles(theme)}>
@@ -76,7 +87,22 @@ const Header: VFC<RouteComponentProps> = ({ history }) => {
               <div className="search">
                 <FiSearch />
               </div>
-              <button onClick={() => onPush('login')}>Login</button>
+              {userData ? (
+                <div className="profile-modal">
+                  <img
+                    onClick={onHandleModal}
+                    className="profile"
+                    alt="user"
+                    src={gravatar.url(userData?.email, {
+                      s: '45rem',
+                      d: 'retro',
+                    })}
+                  />
+                  {modal && <ProfileModal />}
+                </div>
+              ) : (
+                <button onClick={() => onPush('login')}>Login</button>
+              )}
             </User>
           </HeaderResponsive>
         </ChangeWrapper>

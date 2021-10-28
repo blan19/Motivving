@@ -17,6 +17,8 @@ export class UserController {
   @ApiOperation({ summary: '유저 조회' })
   @Get('/')
   async getUser(@User() user) {
+    console.log(user);
+
     return user;
   }
 
@@ -45,5 +47,11 @@ export class UserController {
     }
 
     return null;
+  }
+
+  @Post('logout')
+  async logout(@Response() res) {
+    res.clearCookie('connect.sid', { httpOnly: true });
+    return res.send('ok');
   }
 }

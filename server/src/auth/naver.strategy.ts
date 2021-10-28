@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Strategy } from 'passport-naver';
 import { User } from 'src/entities/User';
 import { Repository } from 'typeorm';
+import { constants } from './constants';
 
 @Injectable()
 export class NaverStrategy extends PassportStrategy(Strategy) {
@@ -11,13 +12,13 @@ export class NaverStrategy extends PassportStrategy(Strategy) {
     @InjectRepository(User) private usersRepository: Repository<User>,
   ) {
     super({
-      clientID: process.env.NAVER_KEY,
-      clientSecret: process.env.NAVER_SECRET,
-      callbackURL: process.env.NAVER_URL,
+      clientID: constants.naverKey,
+      clientSecret: constants.naverSecret,
+      callbackURL: 'http://localhost:4000/oauth/naver',
     });
   }
   async validate(accessToken, refreshToken, profile, done): Promise<any> {
-    const { id, provider, username } = profile;
+    const { id, provider, _json } = profile;
     let changedId = null;
 
     if (!profile) {
@@ -25,7 +26,7 @@ export class NaverStrategy extends PassportStrategy(Strategy) {
     }
 
     if (typeof id !== 'string') {
-      changedId = String(id);
+      changedId = Number(id);
     } else changedId = id;
 
     const exist = await this.usersRepository.findOne({
@@ -39,15 +40,16 @@ export class NaverStrategy extends PassportStrategy(Strategy) {
     }
 
     const user = await this.usersRepository.save({
-      email:
-        profile._json &&
-        profile._json.kakao_account.has_email &&
-        profile._json.kakao_account.email,
-      nickname: username,
+      email: _json && _json.email,
+      nickname: _json.nickname || _json.email,
       password: null,
       snsId: changedId,
       provider,
     });
+
+    if (!user) {
+      return null;
+    }
 
     const { password, ...rest } = user;
 

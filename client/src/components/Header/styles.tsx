@@ -87,6 +87,16 @@ export const User = styled.div<{ isDarkMode?: boolean }>`
     margin-left: 2rem;
   }
 
+  .profile {
+    cursor: pointer;
+    margin-left: 2rem;
+    border-radius: 5px;
+  }
+
+  .profile-modal {
+    position: relative;
+  }
+
   .search {
     transition: opacity 0.3s;
     &:hover {

@@ -103,6 +103,11 @@ export const OauthContainer = styled.div<{ type?: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  a {
+    display: flex;
+    color: black;
+  }
   ${(props) =>
     props.type === 'kakao' &&
     css`

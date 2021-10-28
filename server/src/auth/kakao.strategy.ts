@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Strategy } from 'passport-kakao';
 import { User } from 'src/entities/User';
 import { Repository } from 'typeorm';
+import { constants } from './constants';
 
 @Injectable()
 export class KakaoStrategy extends PassportStrategy(Strategy) {
@@ -11,9 +12,9 @@ export class KakaoStrategy extends PassportStrategy(Strategy) {
     @InjectRepository(User) private usersRepository: Repository<User>,
   ) {
     super({
-      clientID: process.env.KAKAO_KEY,
+      clientID: constants.kakaoKey,
       clientSecret: '',
-      callbackURL: process.env.KAKAO_URL,
+      callbackURL: 'http://localhost:4000/oauth/kakao',
     });
   }
   async validate(accessToken, refreshToken, profile, done): Promise<any> {
@@ -25,7 +26,7 @@ export class KakaoStrategy extends PassportStrategy(Strategy) {
     }
 
     if (typeof id !== 'string') {
-      changedId = String(id);
+      changedId = Number(id);
     } else changedId = id;
 
     const exist = await this.usersRepository.findOne({

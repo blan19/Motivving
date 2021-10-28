@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useCallback, useRef, VFC } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import KaKaoLogin from './KaKaoLogin';
 import NaverLogin from './NaverLogin';
 import {
@@ -15,11 +15,13 @@ import {
 } from './styles';
 import { useQuery, useQueryClient } from 'react-query';
 import axios from 'axios';
-import { fetcher } from '../../lib/api/fetch';
 import { useTheme } from '@emotion/react';
+import { IUser } from '../../dto/IUser';
+import { fetcher } from '../../lib/api/fetch';
 
 interface PropsTypes {
   type?: string;
+  user?: IUser;
 }
 
 interface FormData {
@@ -31,7 +33,7 @@ interface FormData {
 
 const Auth: VFC<PropsTypes> = ({ type }) => {
   const queryClient = useQueryClient();
-  const { data: userData } = useQuery('users', fetcher);
+  const { data: userData } = useQuery<IUser>('users', fetcher);
   const {
     register,
     reset,
@@ -85,6 +87,10 @@ const Auth: VFC<PropsTypes> = ({ type }) => {
     },
     [queryClient, reset, type],
   );
+
+  if (userData) {
+    return <Redirect to="/main" />;
+  }
   return (
     <Form css={FormStyles(theme)} onSubmit={handleSubmit(onSubmit)}>
       <Input
