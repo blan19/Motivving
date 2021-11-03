@@ -6,7 +6,7 @@ import TextLogo from '../../lib/styles/svg/TextLogo';
 import { AuthContainer, LogoBlock, StyledResponsive } from './Styles';
 
 interface PropsTypes {
-  user: IUser | undefined;
+  user?: IUser;
 }
 
 const Signup: VFC<RouteComponentProps & PropsTypes> = ({ history, user }) => {
@@ -19,7 +19,7 @@ const Signup: VFC<RouteComponentProps & PropsTypes> = ({ history, user }) => {
         <LogoBlock onClick={onClick}>
           <TextLogo />
         </LogoBlock>
-        <Auth type="signup" />
+        <Auth type="signup" user={user} />
       </StyledResponsive>
     </AuthContainer>
   );

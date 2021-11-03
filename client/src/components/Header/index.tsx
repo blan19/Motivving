@@ -72,15 +72,17 @@ const Header: VFC<RouteComponentProps> = ({ history }) => {
                     Category
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    css={NavLinkStyles(theme)}
-                    activeClassName="selected"
-                    to="/account"
-                  >
-                    My Motive
-                  </NavLink>
-                </li>
+                {userData && (
+                  <li>
+                    <NavLink
+                      css={NavLinkStyles(theme)}
+                      activeClassName="selected"
+                      to="/account"
+                    >
+                      My Motive
+                    </NavLink>
+                  </li>
+                )}
               </ul>
             </Nav>
             <User isDarkMode={isDarkMode} css={UserStyles(theme)}>

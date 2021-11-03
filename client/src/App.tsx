@@ -7,7 +7,7 @@ import GlobalStyles from './lib/styles/Global';
 import { ResetStyles } from './lib/styles/reset';
 import Main from './pages/Main';
 import THEME from './lib/styles/Theme';
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 import { fetcher } from './lib/api/fetch';
 import { IUser } from './dto/IUser';
 
@@ -40,7 +40,12 @@ const App = () => {
           />
           <Route path="/category/:category" component={Category} />
           <Route path="/video/:video" component={Video} />
-          <Route path="/account" component={Account} />
+          <Route
+            path="/account"
+            render={(props) =>
+              userData ? <Account {...props} /> : <div>로그인이 필요합니다</div>
+            }
+          />
         </Switch>
       </ThemeProvider>
     </>
