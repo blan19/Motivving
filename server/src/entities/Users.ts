@@ -5,10 +5,14 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+import { Likes } from './Likes';
+import { UserMotives } from './UserMotives';
+import { Wishes } from './Wishes';
 
 @Entity()
-export class User {
+export class Users {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -35,4 +39,13 @@ export class User {
 
   @DeleteDateColumn()
   deleteAt: Date | null;
+
+  @OneToMany(() => UserMotives, (userMotives) => userMotives.User)
+  UserMotives: UserMotives[];
+
+  @OneToMany(() => Wishes, (wishes) => wishes.User)
+  Wishes: Wishes[];
+
+  @OneToMany(() => Likes, (likes) => likes.User)
+  Likes: Likes[];
 }

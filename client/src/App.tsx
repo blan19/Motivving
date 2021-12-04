@@ -1,6 +1,6 @@
+import React from 'react';
 import { ThemeProvider } from '@emotion/react';
 import loadable from '@loadable/component';
-import React from 'react';
 import { Route, Switch } from 'react-router';
 import useDarkMode from './hook/useDartkMode';
 import GlobalStyles from './lib/styles/Global';
@@ -22,9 +22,6 @@ const App = () => {
   const { isDarkMode } = useDarkMode();
   const { data: userData } = useQuery<IUser>('users', fetcher);
 
-  if (userData) {
-    console.log(userData);
-  }
   return (
     <>
       <ThemeProvider theme={THEME[isDarkMode ? 'dark' : 'light']}>

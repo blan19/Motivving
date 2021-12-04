@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { PassportSerializer } from '@nestjs/passport';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/entities/User';
+import { Users } from 'src/entities/Users';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class LocalSerializer extends PassportSerializer {
   constructor(
-    @InjectRepository(User) private usersRepository: Repository<User>,
+    @InjectRepository(Users) private usersRepository: Repository<Users>,
   ) {
     super();
   }

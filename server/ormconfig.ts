@@ -1,6 +1,11 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import dotenv from 'dotenv';
-import { User } from 'src/entities/User';
+import { Likes } from 'src/entities/Likes';
+import { Motives } from 'src/entities/Motives';
+import { UserMotives } from 'src/entities/UserMotives';
+import { Users } from 'src/entities/Users';
+import { Videos } from 'src/entities/Videos';
+import { Wishes } from 'src/entities/Wishes';
 
 dotenv.config();
 
@@ -11,7 +16,7 @@ const config: TypeOrmModuleOptions = {
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  entities: [User],
+  entities: [Users, Likes, Motives, UserMotives, Videos, Wishes],
   migrations: [__dirname + '/src/migrations/*.ts'],
   cli: { migrationsDir: 'src/migrations' },
   autoLoadEntities: true,

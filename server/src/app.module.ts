@@ -7,6 +7,7 @@ import { VideoModule } from './video/video.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { OauthModule } from './oauth/oauth.module';
+import { MotiveModule } from './motive/motive.module';
 import * as ormconfig from '../ormconfig';
 
 @Module({
@@ -17,6 +18,7 @@ import * as ormconfig from '../ormconfig';
     AuthModule,
     VideoModule,
     OauthModule,
+    MotiveModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Strategy } from 'passport-kakao';
-import { User } from 'src/entities/User';
+import { Users } from 'src/entities/Users';
 import { Repository } from 'typeorm';
 import { constants } from './constants';
 
 @Injectable()
 export class KakaoStrategy extends PassportStrategy(Strategy) {
   constructor(
-    @InjectRepository(User) private usersRepository: Repository<User>,
+    @InjectRepository(Users) private usersRepository: Repository<Users>,
   ) {
     super({
       clientID: constants.kakaoKey,
