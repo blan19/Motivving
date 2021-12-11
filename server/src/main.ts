@@ -12,8 +12,8 @@ async function bootstrap() {
   const PORT = process.env.PORT || 4001;
 
   const config = new DocumentBuilder()
-    .setTitle('Blog API')
-    .setDescription('Blog 개발을 위한 API 문서')
+    .setTitle('Motivving API')
+    .setDescription('Motivving API Document')
     .setVersion('1.0')
     .addCookieAuth('connect.sid')
     .build();

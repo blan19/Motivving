@@ -31,6 +31,9 @@ export class Users {
   @Column({ type: 'int', name: 'snsId', nullable: true })
   snsId: number;
 
+  @Column({ type: 'varchar', name: 'profileImg', nullable: true })
+  profileImg: string;
+
   @CreateDateColumn()
   createAt: Date;
 

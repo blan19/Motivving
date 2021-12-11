@@ -23,29 +23,27 @@ const App = () => {
   const { data: userData } = useQuery<IUser>('users', fetcher);
 
   return (
-    <>
-      <ThemeProvider theme={THEME[isDarkMode ? 'dark' : 'light']}>
-        <GlobalStyles />
-        <ResetStyles />
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route path="/main" component={Main} />
-          <Route path="/login" component={Login} />
-          <Route
-            path="/signup"
-            render={(props) => <Signup {...props} user={userData} />}
-          />
-          <Route path="/category/:category" component={Category} />
-          <Route path="/video/:video" component={Video} />
-          <Route
-            path="/account"
-            render={(props) =>
-              userData ? <Account {...props} /> : <div>로그인이 필요합니다</div>
-            }
-          />
-        </Switch>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={THEME[isDarkMode ? 'dark' : 'light']}>
+      <GlobalStyles />
+      <ResetStyles />
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route path="/main" component={Main} />
+        <Route path="/login" component={Login} />
+        <Route
+          path="/signup"
+          render={(props) => <Signup {...props} user={userData} />}
+        />
+        <Route path="/category/:category" component={Category} />
+        <Route path="/video/:video" component={Video} />
+        <Route
+          path="/account"
+          render={(props) =>
+            userData ? <Account {...props} /> : <div>로그인이 필요합니다</div>
+          }
+        />
+      </Switch>
+    </ThemeProvider>
   );
 };
 
